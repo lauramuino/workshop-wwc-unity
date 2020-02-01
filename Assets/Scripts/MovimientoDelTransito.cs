@@ -7,12 +7,16 @@ public class MovimientoDelTransito : MonoBehaviour
     private int _velocidad;
     private Vector3 _direccion;
     private bool _detenido = true;
+    public MeshRenderer meshRenderer;
 
     public void Inicializar(int velocidadDeVehiculo)
     {
         _posicionInicial = this.ObtenerPosicionActual();
         _velocidad = velocidadDeVehiculo;
         _detenido = false;
+
+        if(meshRenderer != null)
+            this.CambiarColor(meshRenderer, Random.ColorHSV());
     }
     
     private void OnTriggerEnter(Collider colisionador)
